@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cooking & Kitchen</title>
+
+    <link rel="stylesheet" href="Cooking.css">
+
+</head>
+
+<body>
+
+    <main class="kitchen-container">
+
+
+        <!-- HEADER -->
+
+        <section id="cooking" class="page-section">
+
+            <div class="embedded-header">
+
+                <div>
+
+                    <span class="section-label">
+                        KITCHEN
+                    </span>
+
+                    <h2>
+                        Cooking & Kitchen
+                    </h2>
+
+                    <p>
+                        Manage food preparation and kitchen workflow.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="embedded-page">
+
+                <iframe src="Cooking.html" title="Cooking & Kitchen">
+
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="kitchen-stats">
+
+            <div class="kitchen-stat">
+
+                <div class="kitchen-stat-icon pending">
+                    🆕
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending
+                    </span>
+
+                    <strong id="pendingCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="kitchen-stat">
+
+                <div class="kitchen-stat-icon preparing">
+                    🔥
+                </div>
+
+                <div>
+
+                    <span>
+                        Preparing
+                    </span>
+
+                    <strong id="preparingCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="kitchen-stat">
+
+                <div class="kitchen-stat-icon ready">
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Ready
+                    </span>
+
+                    <strong id="readyCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="kitchen-stat">
+
+                <div class="kitchen-stat-icon total">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Orders
+                    </span>
+
+                    <strong id="totalKitchenOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTER -->
+
+        <section class="kitchen-filter-bar">
+
+            <div>
+
+                <h2>
+                    Live Orders
+                </h2>
+
+                <p>
+                    Showing active customer orders
+                </p>
+
+            </div>
+
+
+            <div class="filter-buttons">
+
+                <button class="filter-btn active" onclick="
+                        setKitchenFilter(
+                            'all',
+                            this
+                        )
+                    ">
+
+                    All
+
+                </button>
+
+
+                <button class="filter-btn" onclick="
+                        setKitchenFilter(
+                            'Pending',
+                            this
+                        )
+                    ">
+
+                    🆕 Pending
+
+                </button>
+
+
+                <button class="filter-btn" onclick="
+                        setKitchenFilter(
+                            'Preparing',
+                            this
+                        )
+                    ">
+
+                    🔥 Preparing
+
+                </button>
+
+
+                <button class="filter-btn" onclick="
+                        setKitchenFilter(
+                            'Ready',
+                            this
+                        )
+                    ">
+
+                    ✅ Ready
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ERROR -->
+
+        <div id="errorMessage" class="error-message">
+
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div id="loading" class="loading">
+
+            <div class="loading-spinner"></div>
+
+            Loading kitchen orders...
+
+        </div>
+
+
+        <!-- ORDERS -->
+
+        <section id="cookingOrders" class="cooking-orders">
+
+        </section>
+
+
+    </main>
+
+
+    <!-- COOKING DETAIL MODAL -->
+
+    <div id="cookingModal" class="cooking-modal">
+
+        <div class="cooking-modal-box">
+
+            <button class="cooking-modal-close" onclick="closeCookingOrder()">
+
+                ×
+
+            </button>
+
+            <div id="cookingOrderDetails"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="Cooking.js"></script>
+
+</body>
+
+</html>

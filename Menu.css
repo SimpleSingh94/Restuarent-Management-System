@@ -1,0 +1,831 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fffaf5;
+    color: #222;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.menu-navbar {
+    height: 75px;
+    background: #171717;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    margin-left: 5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ff8c00;
+}
+
+.cart-top-btn {
+    background: #ff8c00;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart-top-btn span {
+    background: white;
+    color: #ff8c00;
+    padding: 3px 7px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+
+/* ================= HERO ================= */
+
+.menu-hero {
+    min-height: 400px;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.65),
+            rgba(0,0,0,0.65)
+        ),
+        url("restro.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.small-title {
+    color: #ff9d2e;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero-content h1 {
+    font-size: 58px;
+    margin: 15px 0;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.explore-btn {
+    padding: 13px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #ff8c00;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.explore-btn:hover {
+    background: #e87500;
+}
+
+
+/* ================= CATEGORY ================= */
+
+.category-section {
+    padding: 70px 5%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading span {
+    color: #ff8c00;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: #777;
+}
+
+
+/* ================= CATEGORY CARDS ================= */
+
+.category-grid {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.category-card {
+    min-height: 220px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    border: 2px solid transparent;
+
+    position: relative;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff8c00;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.15);
+}
+
+.category-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.category-card p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.category-card button {
+    border: none;
+    background: #fff1df;
+    color: #e87500;
+
+    padding: 10px 18px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal-overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.75);
+
+    z-index: 2000;
+
+    padding: 30px;
+
+    overflow-y: auto;
+}
+
+.modal-overlay.show {
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+/* ================= MENU MODAL ================= */
+
+.menu-modal {
+    width: 100%;
+    max-width: 1100px;
+
+    background: #fffaf5;
+
+    border-radius: 20px;
+
+    margin: 30px auto;
+
+    overflow: hidden;
+
+    animation: popup 0.3s ease;
+}
+
+@keyframes popup {
+
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* ================= MODAL HEADER ================= */
+
+.modal-header {
+    background: #171717;
+
+    color: white;
+
+    padding: 25px 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.modal-header span {
+    color: #ff9d2e;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.modal-header h2 {
+    margin-top: 5px;
+    font-size: 30px;
+}
+
+.close-btn {
+    border: none;
+
+    background: #ff8c00;
+
+    color: white;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background: #e87500;
+}
+
+
+/* ================= SEARCH ================= */
+
+.menu-search {
+    padding: 20px 30px;
+    background: white;
+}
+
+.menu-search input {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.menu-search input:focus {
+    border-color: #ff8c00;
+}
+
+
+/* ================= FOOD GRID ================= */
+
+.food-grid {
+    padding: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* ================= FOOD CARD ================= */
+
+.food-card {
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+
+    transition: 0.3s;
+
+    border: 1px solid #eee;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.12);
+}
+
+.food-image {
+    height: 130px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 60px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0dc,
+            #ffe1bd
+        );
+}
+
+.food-content {
+    padding: 18px;
+}
+
+.food-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.food-description {
+    color: #777;
+    font-size: 13px;
+    min-height: 35px;
+    line-height: 1.4;
+}
+
+.food-bottom {
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.food-price {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #e87500;
+}
+
+.add-btn {
+    border: none;
+
+    background: #ff8c00;
+
+    color: white;
+
+    padding: 9px 14px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    background: #e87500;
+}
+
+
+/* ================= ORDER MODAL ================= */
+
+.order-modal {
+    width: 100%;
+    max-width: 550px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    margin: 50px auto;
+
+    overflow: hidden;
+
+    animation: popup 0.3s ease;
+}
+
+.order-header {
+    background: #171717;
+
+    color: white;
+
+    padding: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.order-header span {
+    color: #ff9d2e;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+.order-header h2 {
+    margin-top: 5px;
+}
+
+
+/* ================= SELECTED ITEMS ================= */
+
+.selected-items {
+    max-height: 430px;
+
+    overflow-y: auto;
+
+    padding: 20px;
+}
+
+.empty-order {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #777;
+}
+
+.empty-order div {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+
+/* ================= ORDER ITEM ================= */
+
+.order-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.order-item-info {
+    flex: 1;
+}
+
+.order-item-info h4 {
+    margin-bottom: 5px;
+}
+
+.order-item-info span {
+    color: #e87500;
+
+    font-weight: bold;
+}
+
+
+/* ================= QUANTITY ================= */
+
+.quantity-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.quantity-box button {
+    width: 28px;
+    height: 28px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #fff0dc;
+
+    color: #e87500;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.quantity-box span {
+    min-width: 20px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+
+/* ================= REMOVE ================= */
+
+.remove-btn {
+    border: none;
+
+    background: transparent;
+
+    color: #e53935;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+/* ================= BILL ================= */
+
+.bill-section {
+    border-top: 1px solid #eee;
+
+    padding: 20px;
+}
+
+.bill-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    color: #555;
+}
+
+.total-row {
+    border-top: 1px solid #ddd;
+
+    padding-top: 15px;
+
+    font-size: 20px;
+
+    color: #111;
+}
+
+
+/* ================= PLACE ORDER ================= */
+
+.place-order-btn {
+    width: calc(100% - 40px);
+
+    margin: 0 20px 20px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ff8c00;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.place-order-btn:hover {
+    background: #e87500;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 1000px) {
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-navbar {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+}
+/* =====================================================
+   DELIVERY ADDRESS
+===================================================== */
+
+.delivery-address-section {
+    margin-top: 20px;
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+}
+
+.delivery-address-section h3 {
+    margin: 0 0 5px;
+
+    font-size: 18px;
+
+    color: #1f2937;
+}
+
+.address-help-text {
+    margin: 0 0 18px;
+
+    font-size: 13px;
+
+    color: #6b7280;
+}
+
+.address-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.address-field {
+    margin-bottom: 14px;
+}
+
+.address-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #374151;
+}
+
+.address-field input {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    background: white;
+
+    transition: 0.2s;
+}
+
+.address-field input:focus {
+    border-color: #f59e0b;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(245, 158, 11, 0.12);
+}
+
+.optional {
+    color: #9ca3af;
+
+    font-weight: normal;
+}
+
+
+@media (max-width: 600px) {
+
+    .address-row {
+        grid-template-columns: 1fr;
+    }
+
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Royal Restaurant - Food Inventory</title>
+
+    <link rel="stylesheet"
+        href="Food.css">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="top-header">
+
+        <div class="header-left">
+
+            <div class="logo">
+                🍽️
+            </div>
+
+            <div>
+
+                <h1>
+                    Royal Restaurant
+                </h1>
+
+                <p>
+                    Food Inventory Management
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="back-btn"
+            onclick="goBack()">
+
+            ← Staff Dashboard
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-container">
+
+
+        <!-- PAGE TITLE -->
+
+        <section class="page-intro">
+
+            <div>
+
+                <span class="section-label">
+                    FOOD INVENTORY
+                </span>
+
+                <h2>
+                    Food & Stock Management
+                </h2>
+
+                <p>
+                    Enter and manage restaurant food
+                    and ingredient requirements directly
+                    from the table.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Items
+                    </span>
+
+                    <strong id="totalItems">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <span>
+                        Low Stock
+                    </span>
+
+                    <strong id="lowStockItems">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⏰
+                </div>
+
+                <div>
+
+                    <span>
+                        Expiring Soon
+                    </span>
+
+                    <strong id="expiringItems">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ❌
+                </div>
+
+                <div>
+
+                    <span>
+                        Expired
+                    </span>
+
+                    <strong id="expiredItems">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INVENTORY TABLE
+        ================================================== -->
+
+        <section class="inventory-card">
+
+
+            <!-- TABLE HEADER -->
+
+            <div class="table-header">
+
+                <div>
+
+                    <span class="section-label">
+                        INVENTORY
+                    </span>
+
+                    <h2>
+                        Food Requirements
+                    </h2>
+
+                </div>
+
+
+                <div class="table-controls">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="🔍 Search food..."
+                        oninput="searchFood()">
+
+
+                    <button
+                        class="add-btn"
+                        onclick="addNewRow()">
+
+                        ＋ Add Item
+
+                    </button>
+
+
+                    <button
+                        class="refresh-btn"
+                        onclick="loadFood()">
+
+                        ↻ Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="message">
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Food / Ingredient
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Quantity
+                            </th>
+
+                            <th>
+                                Unit
+                            </th>
+
+                            <th>
+                                Storage Days
+                            </th>
+
+                            <th>
+                                Minimum Stock
+                            </th>
+
+                            <th>
+                                Purchase Date
+                            </th>
+
+                            <th>
+                                Expiry Date
+                            </th>
+
+                            <th>
+                                Supplier
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="foodTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="emptyMessage"
+                class="empty-message">
+
+                📦 No food items available.
+
+                <br>
+
+                Click
+                <strong>＋ Add Item</strong>
+                to add food.
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="Food.js"></script>
+
+</body>
+
+</html>

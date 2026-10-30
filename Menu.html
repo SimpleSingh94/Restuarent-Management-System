@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant Menu</title>
+
+    <link rel="stylesheet"
+          href="Menu.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="menu-navbar">
+
+        <div class="logo">
+
+            🍽️
+
+            <span>
+                Royal Restaurant
+            </span>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="ClientPage.html">
+                Home
+            </a>
+
+            <a href="Registration.html">
+                Registration
+            </a>
+
+            <a href="Menu.html"
+               class="active">
+
+                Menu
+
+            </a>
+
+            <a href="About.html">
+                About
+            </a>
+
+        </div>
+
+
+        <button
+            class="cart-top-btn"
+            onclick="openOrderPanel()">
+
+            🛒 My Order
+
+            <span id="topCartCount">
+                0
+            </span>
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="menu-hero">
+
+        <div class="hero-content">
+
+            <span class="small-title">
+                WELCOME TO
+            </span>
+
+            <h1>
+                Our Delicious Menu
+            </h1>
+
+            <p>
+                Choose your favourite category
+                and build your order online.
+            </p>
+
+            <button
+                onclick="scrollToCategories()"
+                class="explore-btn">
+
+                Explore Menu ↓
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CATEGORY SECTION ================= -->
+
+    <section
+        class="category-section"
+        id="categories">
+
+
+        <div class="section-heading">
+
+            <span>
+                EXPLORE
+            </span>
+
+            <h2>
+                Choose Your Category
+            </h2>
+
+            <p>
+                Click any category to view
+                delicious dishes.
+            </p>
+
+        </div>
+
+
+
+        <div class="category-grid">
+
+
+            <!-- STARTERS -->
+
+            <div
+                class="category-card starters"
+                onclick="openCategory('Starters')">
+
+                <div class="category-icon">
+                    🥗
+                </div>
+
+                <h3>
+                    Starters
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Starters →
+                </button>
+
+            </div>
+
+
+
+            <!-- MAIN COURSE -->
+
+            <div
+                class="category-card main-course"
+                onclick="openCategory('Main Course')">
+
+                <div class="category-icon">
+                    🍛
+                </div>
+
+                <h3>
+                    Main Course
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Main Course →
+                </button>
+
+            </div>
+
+
+
+            <!-- PIZZA -->
+
+            <div
+                class="category-card pizza"
+                onclick="openCategory('Pizza')">
+
+                <div class="category-icon">
+                    🍕
+                </div>
+
+                <h3>
+                    Pizza
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Pizza →
+                </button>
+
+            </div>
+
+
+
+            <!-- BURGERS -->
+
+            <div
+                class="category-card burgers"
+                onclick="openCategory('Burgers')">
+
+                <div class="category-icon">
+                    🍔
+                </div>
+
+                <h3>
+                    Burgers
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Burgers →
+                </button>
+
+            </div>
+
+
+
+            <!-- CHINESE -->
+
+            <div
+                class="category-card chinese"
+                onclick="openCategory('Chinese')">
+
+                <div class="category-icon">
+                    🥡
+                </div>
+
+                <h3>
+                    Chinese
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Chinese →
+                </button>
+
+            </div>
+
+
+
+            <!-- DESSERT -->
+
+            <div
+                class="category-card desserts"
+                onclick="openCategory('Desserts')">
+
+                <div class="category-icon">
+                    🍰
+                </div>
+
+                <h3>
+                    Desserts
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Desserts →
+                </button>
+
+            </div>
+
+
+
+            <!-- DRINKS -->
+
+            <div
+                class="category-card drinks"
+                onclick="openCategory('Drinks')">
+
+                <div class="category-icon">
+                    🥤
+                </div>
+
+                <h3>
+                    Drinks
+                </h3>
+
+                <p>
+                    20 Delicious Options
+                </p>
+
+                <button>
+                    View Drinks →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- CATEGORY POPUP -->
+    <!-- ================================================= -->
+
+    <div
+        class="modal-overlay"
+        id="categoryModal">
+
+
+        <div class="menu-modal">
+
+
+            <!-- HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span id="modalSmallTitle">
+                        MENU
+                    </span>
+
+                    <h2 id="modalCategoryTitle">
+                        Starters
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="close-btn"
+                    onclick="closeCategory()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="menu-search">
+
+                <input
+                    type="text"
+                    id="menuSearch"
+                    placeholder="🔍 Search dishes..."
+                    oninput="searchMenu()">
+
+            </div>
+
+
+
+            <!-- FOOD ITEMS -->
+
+            <div
+                class="food-grid"
+                id="foodGrid">
+
+                <!-- JavaScript will insert dishes here -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SELECTED ORDER POPUP -->
+    <!-- ================================================= -->
+
+    <div
+        class="modal-overlay"
+        id="orderModal">
+
+
+        <div class="order-modal">
+
+
+            <!-- ORDER HEADER -->
+
+            <div class="order-header">
+
+                <div>
+
+                    <span>
+                        YOUR ORDER
+                    </span>
+
+                    <h2>
+                        Selected Items
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="close-btn"
+                    onclick="closeOrderPanel()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 ORDER ITEMS
+            =========================================== -->
+
+            <div
+                id="selectedItems"
+                class="selected-items">
+
+
+                <div class="empty-order">
+
+                    <div>
+                        🛒
+                    </div>
+
+                    <h3>
+                        Your order is empty
+                    </h3>
+
+                    <p>
+                        Add delicious dishes
+                        from the menu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 DELIVERY ADDRESS
+            =========================================== -->
+
+            <div class="delivery-address-section">
+
+
+                <h3>
+                    📍 Delivery Address
+                </h3>
+
+
+                <p class="address-help-text">
+
+                    Enter the address where you want
+                    your food delivered.
+
+                </p>
+
+
+
+                <!-- HOUSE + AREA -->
+
+                <div class="address-row">
+
+
+                    <div class="address-field">
+
+                        <label for="house">
+
+                            House / Flat No.
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="house"
+                            placeholder="e.g. Flat 204">
+
+                    </div>
+
+
+
+                    <div class="address-field">
+
+                        <label for="area">
+
+                            Area / Street
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="area"
+                            placeholder="e.g. Gomti Nagar">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CITY + STATE -->
+
+                <div class="address-row">
+
+
+                    <div class="address-field">
+
+                        <label for="city">
+
+                            City
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="e.g. Lucknow">
+
+                    </div>
+
+
+
+                    <div class="address-field">
+
+                        <label for="state">
+
+                            State
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="state"
+                            placeholder="e.g. Uttar Pradesh">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PINCODE -->
+
+                <div class="address-field">
+
+                    <label for="pincode">
+
+                        Pincode
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="pincode"
+                        maxlength="6"
+                        inputmode="numeric"
+                        placeholder="Enter 6-digit pincode">
+
+                </div>
+
+
+
+                <!-- LANDMARK -->
+
+                <div class="address-field">
+
+                    <label for="landmark">
+
+                        Landmark
+                        <span class="optional">
+                            (Optional)
+                        </span>
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="landmark"
+                        placeholder="e.g. Near City Mall">
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 BILL
+            =========================================== -->
+
+            <div class="bill-section">
+
+
+                <div class="bill-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong>
+
+                        ₹<span id="subtotal">
+                            0.00
+                        </span>
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="bill-row">
+
+                    <span>
+                        GST (5%)
+                    </span>
+
+                    <strong>
+
+                        ₹<span id="gst">
+                            0.00
+                        </span>
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="bill-row total-row">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong>
+
+                        ₹<span id="total">
+                            0.00
+                        </span>
+
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 PLACE ORDER
+            =========================================== -->
+
+            <button
+                class="place-order-btn"
+                onclick="placeOrder()">
+
+                🛍️ Place Order
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="Menu.js"></script>
+
+
+</body>
+
+</html>

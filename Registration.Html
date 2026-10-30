@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant Registration</title>
+
+    <!-- Registration CSS -->
+    <link rel="stylesheet" href="Registration.css">
+</head>
+
+<body class="registration-page">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="registration-navbar">
+
+        <div class="logo">
+            <span>🍽</span> Foodie's Restaurant
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="ClientPage.html">Home</a>
+            </li>
+
+            <li>
+                <a href="Registration.html" class="active">Registration</a>
+            </li>
+
+            <li>
+                <a href="Menu.html">Menu</a>
+            </li>
+
+            <li>
+                <a href="About.html">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+
+        <div>
+            <p class="small-title">WELCOME TO FOODIE'S</p>
+
+            <h1>Restaurant Registration</h1>
+
+            <p>
+                Tell us about your food preferences and enjoy
+                a personalized dining experience.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <section class="registration-container">
+
+        <!-- LEFT INFORMATION -->
+
+        <div class="registration-info">
+
+            <p class="section-label">ABOUT YOUR EXPERIENCE</p>
+
+            <h2>
+                Make Your Dining
+                <span>Experience Special</span>
+            </h2>
+
+            <p class="info-text">
+                Register with us and let our restaurant team know
+                about your preferences. This helps us provide better
+                food recommendations and a comfortable dining experience.
+            </p>
+
+
+            <!-- Feature 1 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🍴
+                </div>
+
+                <div>
+                    <h3>Personalized Food</h3>
+
+                    <p>
+                        Tell us about your favorite cuisines and
+                        food preferences.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Feature 2 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🥗
+                </div>
+
+                <div>
+                    <h3>Dietary Preferences</h3>
+
+                    <p>
+                        Choose your dietary preferences so we can
+                        serve you better.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Feature 3 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⭐
+                </div>
+
+                <div>
+                    <h3>Better Experience</h3>
+
+                    <p>
+                        Your information helps us create a better
+                        restaurant experience for you.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT FORM -->
+
+        <div class="registration-form-container">
+
+            <div class="form-heading">
+
+                <p class="section-label">JOIN US</p>
+
+                <h2>Create Your Profile</h2>
+
+                <p>
+                    Please enter your details below.
+                </p>
+
+            </div>
+
+
+            <!-- IMPORTANT:
+                 Keep this ID because ClientPage.js uses it -->
+
+            <form id="registrationForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DIETARY PREFERENCES -->
+
+                <div class="form-group">
+
+                    <label>
+                        Dietary Preferences
+                    </label>
+
+                    <div class="checkbox-grid">
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="dietary"
+                                value="Vegetarian"
+                            >
+                            <span>Vegetarian</span>
+                        </label>
+
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="dietary"
+                                value="Vegan"
+                            >
+                            <span>Vegan</span>
+                        </label>
+
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="dietary"
+                                value="Gluten-Free"
+                            >
+                            <span>Gluten-Free</span>
+                        </label>
+
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="dietary"
+                                value="Dairy-Free"
+                            >
+                            <span>Dairy-Free</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAVORITE CUISINE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Favorite Cuisine
+                    </label>
+
+                    <div class="checkbox-grid">
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="cuisine"
+                                value="Indian"
+                            >
+                            <span>Indian</span>
+                        </label>
+
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="cuisine"
+                                value="Chinese"
+                            >
+                            <span>Chinese</span>
+                        </label>
+
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="cuisine"
+                                value="Italian"
+                            >
+                            <span>Italian</span>
+                        </label>
+
+
+                        <label class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                name="cuisine"
+                                value="Mexican"
+                            >
+                            <span>Mexican</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SPICE LEVEL -->
+
+                <div class="form-group">
+
+                    <label for="spice">
+                        Preferred Spice Level
+                    </label>
+
+                    <select id="spice" name="spice">
+
+                        <option value="">
+                            Select spice level
+                        </option>
+
+                        <option value="Mild">
+                            Mild
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="Spicy">
+                            Spicy
+                        </option>
+
+                        <option value="Extra Spicy">
+                            Extra Spicy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- COMMENTS -->
+
+                <div class="form-group">
+
+                    <label for="comments">
+                        Additional Comments
+                    </label>
+
+                    <textarea
+                        id="comments"
+                        name="comments"
+                        rows="4"
+                        placeholder="Tell us anything else about your food preferences..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+
+                    <span>Complete Registration</span>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <p class="secure-text">
+                    🔒 Your information is securely stored.
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="registration-footer">
+
+        <p>
+            © 2026 Foodie's Restaurant. All Rights Reserved.
+        </p>
+
+        <p>
+            Delicious food • Great experience • Happy customers
+        </p>
+
+    </footer>
+
+
+    <!-- IMPORTANT:
+         Your existing ClientPage.js handles registration -->
+
+    <script src="ClientPage.js"></script>
+
+</body>
+
+</html>

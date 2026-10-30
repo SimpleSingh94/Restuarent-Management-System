@@ -1,0 +1,292 @@
+/* =====================================================
+   COOKING DETAIL MODAL
+===================================================== */
+
+.cooking-card {
+    cursor: pointer;
+}
+
+.view-hint {
+    text-align: center;
+
+    margin-top: 12px;
+
+    padding-top: 10px;
+
+    border-top: 1px dashed #e5e7eb;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.cooking-modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    background:
+        rgba(15, 23, 42, 0.65);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.cooking-modal.show {
+    display: flex;
+}
+
+.cooking-modal-box {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 26px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.28);
+}
+
+.cooking-modal-close {
+    position: absolute;
+
+    right: 15px;
+
+    top: 12px;
+
+    width: 37px;
+
+    height: 37px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.cooking-modal-close:hover {
+    background: #e2e8f0;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.cooking-modal-title {
+    padding-right: 45px;
+
+    margin-bottom: 20px;
+}
+
+.cooking-modal-title > span {
+    color: #2563eb;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.cooking-modal-title h2 {
+    margin-top: 5px;
+
+    font-size: 24px;
+
+    color: #111827;
+}
+
+.cooking-modal-title p {
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   DETAILS
+===================================================== */
+
+.cooking-detail-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.cooking-detail-box {
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    padding: 13px;
+}
+
+.cooking-detail-box span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+}
+
+.cooking-detail-box strong {
+    color: #111827;
+
+    word-break: break-word;
+}
+
+
+/* =====================================================
+   ITEMS
+===================================================== */
+
+.cooking-modal-items {
+    border-top: 1px solid #e5e7eb;
+
+    padding-top: 18px;
+}
+
+.cooking-modal-items h3 {
+    margin-bottom: 12px;
+
+    color: #111827;
+
+    font-size: 16px;
+}
+
+.cooking-modal-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #eef2f7;
+
+    color: #374151;
+}
+
+.cooking-modal-item strong {
+    color: #111827;
+}
+
+.cooking-modal-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.cooking-modal-actions {
+    margin-top: 20px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.modal-start-btn,
+.modal-ready-btn {
+    border: none;
+
+    width: 100%;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 800;
+}
+
+.modal-start-btn {
+    background: #ea580c;
+}
+
+.modal-ready-btn {
+    background: #16a34a;
+}
+
+.modal-start-btn:hover {
+    background: #c2410c;
+}
+
+.modal-ready-btn:hover {
+    background: #15803d;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .cooking-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cooking-modal-box {
+        padding: 20px;
+    }
+
+}

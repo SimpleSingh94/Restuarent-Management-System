@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery Dashboard</title>
+
+    <link rel="stylesheet"
+          href="Delivery.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                🍽️
+            </div>
+
+            <div>
+                <h2>Royal Restaurant</h2>
+                <span>Staff Panel</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <button
+                class="nav-item"
+                onclick="openPage('Staff.html')">
+
+                🏠
+                <span>Dashboard</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="openPage('Order.html')">
+
+                📋
+                <span>Orders</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="openPage('Food.html')">
+
+                🍔
+                <span>Food</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="openPage('Cooking.html')">
+
+                👨‍🍳
+                <span>Cooking</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="openPage('Cleaning.html')">
+
+                🧹
+                <span>Cleaning</span>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                onclick="openPage('Management.html')">
+
+                📊
+                <span>Management</span>
+
+            </button>
+
+
+            <button
+                class="nav-item active"
+                onclick="openPage('Delivery.html')">
+
+                🚚
+                <span>Delivery</span>
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout-btn"
+                onclick="staffLogout()">
+
+                🚪 Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+
+                <span class="page-label">
+                    Staff Panel / Delivery
+                </span>
+
+                <h1>
+                    🚚 Delivery Dashboard
+                </h1>
+
+                <p>
+                    Manage food pickup, delivery partners
+                    and delivery status.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <div
+                    id="connectionStatus"
+                    class="connection-status">
+
+                    🟢 Connected
+
+                </div>
+
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadDeliveries()">
+
+                    🔄 Refresh
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==========================================
+             STATISTICS
+        =========================================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon waiting">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>
+                        Waiting
+                    </span>
+
+                    <strong id="waitingCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon assigned">
+                    🚴
+                </div>
+
+                <div>
+
+                    <span>
+                        Assigned
+                    </span>
+
+                    <strong id="assignedCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon transit">
+                    🛵
+                </div>
+
+                <div>
+
+                    <span>
+                        On The Way
+                    </span>
+
+                    <strong id="onWayCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon delivered">
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Delivered
+                    </span>
+
+                    <strong id="deliveredCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             DELIVERY FILTERS
+        =========================================== -->
+
+        <section class="filter-section">
+
+            <button
+                class="filter-btn active"
+                onclick="setDeliveryFilter('all', this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="setDeliveryFilter(
+                    'Waiting for Delivery Partner',
+                    this
+                )">
+
+                Waiting
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="setDeliveryFilter(
+                    'Rider Assigned',
+                    this
+                )">
+
+                Assigned
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="setDeliveryFilter(
+                    'Picked Up',
+                    this
+                )">
+
+                Picked Up
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="setDeliveryFilter(
+                    'On The Way',
+                    this
+                )">
+
+                On The Way
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="setDeliveryFilter(
+                    'Delivered',
+                    this
+                )">
+
+                Delivered
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             LOADING
+        =========================================== -->
+
+        <div
+            id="loading"
+            class="loading">
+
+            <div class="loader"></div>
+
+            <p>
+                Loading deliveries...
+            </p>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             ERROR MESSAGE
+        =========================================== -->
+
+        <div
+            id="errorMessage"
+            class="error-message">
+
+        </div>
+
+
+
+        <!-- ==========================================
+             DELIVERY CARDS
+        =========================================== -->
+
+        <section
+            id="deliveryContainer"
+            class="delivery-grid">
+
+        </section>
+
+
+
+        <!-- ==========================================
+             EMPTY MESSAGE
+        =========================================== -->
+
+        <div
+            id="emptyMessage"
+            class="empty-message">
+
+            <div class="empty-icon">
+                🚚
+            </div>
+
+            <h2>
+                No Deliveries
+            </h2>
+
+            <p>
+                Delivery requests will appear here
+                when food is ready.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             LAST UPDATED
+        =========================================== -->
+
+        <div class="last-updated">
+
+            Last updated:
+
+            <span id="lastUpdated">
+                --
+            </span>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="Delivery.js"></script>
+
+
+</body>
+
+</html>

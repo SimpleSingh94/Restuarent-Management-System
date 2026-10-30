@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Royal Restaurant - Management</title>
+
+    <link rel="stylesheet" href="Management.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         MANAGEMENT PAGE
+    ====================================================== -->
+
+    <div class="management-page">
+
+        <!-- HEADER -->
+        <header class="management-header">
+
+            <div class="header-left">
+
+                <button class="back-btn" onclick="goBackToStaff()">
+                    ←
+                </button>
+
+                <div>
+
+                    <span class="section-label">
+                        RESTAURANT CONTROL
+                    </span>
+
+                    <h1>
+                        Management
+                    </h1>
+
+                    <p>
+                        Overall restaurant operations and
+                        performance overview.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+     MANAGEMENT CONTROLS
+================================================== -->
+
+            <div class="header-actions">
+
+                <div id="connectionStatus" class="connection-status">
+                    🟢 Connected
+                </div>
+
+                <div class="date-control">
+
+                    <label for="managementDate">
+                        Date
+                    </label>
+
+                    <input type="date" id="managementDate">
+
+                </div>
+
+                <button class="refresh-btn" onclick="loadManagementData()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- LOADING -->
+        <div id="loadingMessage" class="loading-message">
+
+            <div class="loader"></div>
+
+            <p>
+                Loading management data...
+            </p>
+
+        </div>
+
+
+        <!-- ERROR -->
+        <div id="errorMessage" class="error-message">
+
+            ❌ Unable to load management data.
+
+        </div>
+
+
+        <!-- =================================================
+             MAIN STATISTICS
+        ================================================== -->
+
+        <section class="management-grid">
+
+            <!-- TOTAL ORDERS -->
+            <div class="management-card">
+
+                <div class="card-icon orders-icon">
+                    📦
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Total Orders
+                    </span>
+
+                    <strong id="totalOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL CUSTOMERS -->
+            <div class="management-card">
+
+                <div class="card-icon customers-icon">
+                    👥
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Total Customers
+                    </span>
+
+                    <strong id="totalCustomers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL SALES -->
+            <div class="management-card">
+
+                <div class="card-icon sales-icon">
+                    💰
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Total Sales
+                    </span>
+
+                    <strong id="totalSales">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TODAY SALES -->
+            <div class="management-card">
+
+                <div class="card-icon today-sales-icon">
+                    📈
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Today's Sales
+                    </span>
+
+                    <strong id="todaySales">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PENDING -->
+            <div class="management-card">
+
+                <div class="card-icon pending-icon">
+                    ⏳
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Pending Orders
+                    </span>
+
+                    <strong id="pendingOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREPARING -->
+            <div class="management-card">
+
+                <div class="card-icon preparing-icon">
+                    👨‍🍳
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Preparing Orders
+                    </span>
+
+                    <strong id="preparingOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- READY -->
+            <div class="management-card">
+
+                <div class="card-icon ready-icon">
+                    ✅
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Ready Orders
+                    </span>
+
+                    <strong id="readyOrders">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- DELIVERIES -->
+            <div class="management-card">
+
+                <div class="card-icon delivery-icon">
+                    🚴
+                </div>
+
+                <div class="card-content">
+
+                    <span>
+                        Total Deliveries
+                    </span>
+
+                    <strong id="totalDeliveries">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ORDER STATUS
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        ORDER MONITOR
+                    </span>
+
+                    <h2>
+                        Order Status Overview
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-grid">
+
+                <div class="status-box pending-box">
+
+                    <span>
+                        ⏳ Pending
+                    </span>
+
+                    <strong id="statusPending">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box confirmed-box">
+
+                    <span>
+                        ✔ Confirmed
+                    </span>
+
+                    <strong id="statusConfirmed">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box preparing-box">
+
+                    <span>
+                        👨‍🍳 Preparing
+                    </span>
+
+                    <strong id="statusPreparing">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box ready-box">
+
+                    <span>
+                        🍽️ Ready
+                    </span>
+
+                    <strong id="statusReady">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box completed-box">
+
+                    <span>
+                        ✔ Completed
+                    </span>
+
+                    <strong id="statusCompleted">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box cancelled-box">
+
+                    <span>
+                        ❌ Cancelled
+                    </span>
+
+                    <strong id="statusCancelled">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DELIVERY OVERVIEW
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        DELIVERY MONITOR
+                    </span>
+
+                    <h2>
+                        Delivery Overview
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="delivery-overview">
+
+                <div class="delivery-box">
+
+                    <div class="small-icon">
+                        🚴
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Deliveries
+                        </span>
+
+                        <strong id="deliveryTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="small-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Waiting
+                        </span>
+
+                        <strong id="deliveryWaiting">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="small-icon">
+                        📦
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Assigned
+                        </span>
+
+                        <strong id="deliveryAssigned">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="small-icon">
+                        🛵
+                    </div>
+
+                    <div>
+
+                        <span>
+                            On The Way
+                        </span>
+
+                        <strong id="deliveryTransit">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="small-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Delivered
+                        </span>
+
+                        <strong id="deliveryDelivered">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECENT ORDERS
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        RECENT ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Orders
+                    </h2>
+
+                </div>
+
+                <span id="lastUpdated" class="last-updated">
+                    Last updated: --
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Order ID
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Order Type
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="recentOrdersBody">
+
+                        <tr>
+
+                            <td colspan="6" class="empty-cell">
+
+                                No orders found.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESTAURANT INFORMATION
+        ================================================== -->
+
+        <section class="panel information-panel">
+
+            <div class="info-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h2>
+                    Restaurant Operations
+                </h2>
+
+                <p>
+                    This Management page combines customer,
+                    order and delivery information from the
+                    existing Royal Restaurant system.
+                </p>
+
+                <p>
+                    Management data is loaded directly from
+                    the existing MySQL-backed APIs.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            Royal Restaurant Management System
+
+        </footer>
+
+    </div>
+
+
+    <script src="Management.js"></script>
+
+</body>
+
+</html>

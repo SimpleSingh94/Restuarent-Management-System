@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Payment</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        .payment-container {
+            width: 420px;
+            max-width: 92%;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .amount-box {
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .amount-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .amount {
+            font-size: 35px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .upi-box {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .upi-label {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .upi-id {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 6px;
+        }
+
+        .pay-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #198754;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pay-btn:hover {
+            background: #146c43;
+        }
+
+        .reference-section {
+            display: none;
+            margin-top: 25px;
+        }
+
+        .reference-section input {
+            width: 100%;
+            padding: 13px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #0d6efd;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="payment-container">
+
+        <div class="icon">
+            💳
+        </div>
+
+        <h1>Registration Payment</h1>
+
+        <p class="subtitle">
+            Complete the registration fee payment.
+        </p>
+
+        <div class="amount-box">
+
+            <div class="amount-label">
+                Registration Fee
+            </div>
+
+            <div class="amount">
+                ₹100
+            </div>
+
+        </div>
+
+        <div class="upi-box">
+
+            <div class="upi-label">
+                Pay to UPI
+            </div>
+
+            <!-- CHANGE THIS TO YOUR REAL UPI ID -->
+            <div class="upi-id">
+                yourupi@upi
+            </div>
+
+        </div>
+
+        <button
+            class="pay-btn"
+            onclick="openUPIPayment()">
+
+            💰 Pay ₹100
+
+        </button>
+
+        <div
+            class="reference-section"
+            id="referenceSection">
+
+            <p>
+                After completing payment, enter your
+                UPI transaction/reference ID.
+            </p>
+
+            <input
+                type="text"
+                id="paymentReference"
+                placeholder="Enter transaction ID"
+            >
+
+            <button
+                class="confirm-btn"
+                onclick="confirmPayment()">
+
+                Confirm Payment
+
+            </button>
+
+        </div>
+
+        <div
+            class="message"
+            id="message">
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const REGISTRATION_FEE = 100;
+
+        /*
+         * CHANGE THIS
+         * Example:
+         * simple@upi
+         */
+        const UPI_ID = "yourupi@upi";
+
+        const UPI_NAME = "Royal Restaurant";
+
+
+        function openUPIPayment() {
+
+            const upiURL =
+                "upi://pay" +
+                "?pa=" + encodeURIComponent(UPI_ID) +
+                "&pn=" + encodeURIComponent(UPI_NAME) +
+                "&am=" + REGISTRATION_FEE +
+                "&cu=INR";
+
+            /*
+             * Opens installed UPI application
+             */
+            window.location.href = upiURL;
+
+
+            /*
+             * Show reference section after
+             * returning to website.
+             */
+            setTimeout(function () {
+
+                document
+                    .getElementById("referenceSection")
+                    .style.display = "block";
+
+            }, 1500);
+
+        }
+
+
+        async function confirmPayment() {
+
+            const reference =
+                document
+                    .getElementById("paymentReference")
+                    .value
+                    .trim();
+
+
+            if (!reference) {
+
+                alert(
+                    "Please enter your payment reference ID."
+                );
+
+                return;
+
+            }
+
+
+            const registrationData =
+                JSON.parse(
+                    localStorage.getItem(
+                        "pendingRegistration"
+                    )
+                );
+
+
+            if (!registrationData) {
+
+                alert(
+                    "Registration information not found."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:3000/register",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                ...registrationData,
+
+                                payment_id:
+                                    reference,
+
+                                payment_status:
+                                    "PENDING_VERIFICATION"
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok || !data.success) {
+
+                    document
+                        .getElementById("message")
+                        .textContent =
+                        "❌ " +
+                        (
+                            data.message ||
+                            "Registration failed."
+                        );
+
+                    return;
+
+                }
+
+
+                /*
+                 * Save registration information
+                 */
+                localStorage.setItem(
+                    "registrationId",
+                    data.registrationId
+                );
+
+
+                localStorage.removeItem(
+                    "pendingRegistration"
+                );
+
+
+                document
+                    .getElementById("message")
+                    .textContent =
+                    "✅ Registration submitted successfully!";
+
+
+                alert(
+                    "Registration submitted.\n\n" +
+                    "Registration ID: " +
+                    data.registrationId +
+                    "\n\nPayment verification is pending."
+                );
+
+
+            }
+            catch (error) {
+
+                console.error(error);
+
+                document
+                    .getElementById("message")
+                    .textContent =
+                    "❌ Server connection failed.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

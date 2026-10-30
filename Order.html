@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Management</title>
+
+    <link rel="stylesheet" href="Order.css">
+
+</head>
+
+<body>
+
+    <main class="order-page">
+
+        <!-- HEADER -->
+
+        <section class="order-header">
+
+            <div>
+                <span class="section-label">
+                    CUSTOMER ORDERS
+                </span>
+
+                <h1>
+                    Order Management
+                </h1>
+
+                <p>
+                    View and manage customer orders.
+                </p>
+            </div>
+
+            <button
+                class="refresh-main-btn"
+                onclick="loadOrders()">
+
+                🔄 Refresh
+
+            </button>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="order-stats">
+
+            <div class="order-stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+                    <span>Total Orders</span>
+                    <strong id="totalOrders">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="order-stat-card">
+
+                <div class="stat-icon pending">
+                    ⏳
+                </div>
+
+                <div>
+                    <span>Pending</span>
+                    <strong id="pendingOrders">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="order-stat-card">
+
+                <div class="stat-icon preparing">
+                    🔥
+                </div>
+
+                <div>
+                    <span>Preparing</span>
+                    <strong id="preparingOrders">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="order-stat-card">
+
+                <div class="stat-icon ready">
+                    ✅
+                </div>
+
+                <div>
+                    <span>Ready</span>
+                    <strong id="readyOrders">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTER -->
+
+        <section class="order-controls">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchOrder"
+                    placeholder="Search order, customer or phone..."
+                    oninput="filterOrders()">
+
+            </div>
+
+
+            <select
+                id="statusFilter"
+                onchange="filterOrders()">
+
+                <option value="All">
+                    All Status
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Confirmed">
+                    Confirmed
+                </option>
+
+                <option value="Preparing">
+                    Preparing
+                </option>
+
+                <option value="Ready">
+                    Ready
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+
+            <button
+                class="clear-btn"
+                onclick="clearFilters()">
+
+                Clear
+
+            </button>
+
+        </section>
+
+
+        <!-- RESULT -->
+
+        <div
+            id="orderResult"
+            class="order-result">
+
+            Showing 0 orders
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <section class="order-table-card">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Order
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Items
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Time
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="ordersTable">
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                class="loading-cell">
+
+                                ⏳ Loading orders...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ORDER DETAILS MODAL -->
+
+    <div
+        id="orderModal"
+        class="order-modal">
+
+        <div class="order-modal-box">
+
+            <button
+                class="modal-close"
+                onclick="closeOrderModal()">
+
+                ×
+
+            </button>
+
+            <div id="orderDetails"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="Order.js"></script>
+
+</body>
+
+</html>
